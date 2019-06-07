@@ -1,5 +1,8 @@
 package com.example.jugarenbolsa.activities;
 
+import android.content.Intent;
+import android.net.wifi.p2p.WifiP2pManager;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,10 +24,15 @@ import com.example.jugarenbolsa.data.StocksBought;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Timer;
 
 import es.dmoral.toasty.Toasty;
 
 public class PlayActivity extends AppCompatActivity implements View.OnClickListener {
+	CountDownTimer countDownTimer;
+	String sActionbarTitle = "";
+	final long TOTAL_AVAILABLE_TIME = 10000;	// mls
+	long remaining = TOTAL_AVAILABLE_TIME;
 
 	Bolsa bolsa;
 	Controlador controlador;
@@ -50,6 +58,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_play);
+
+		sActionbarTitle = getTitle().toString();
 
 		txtPlayersName = findViewById( R.id.txtPlayersName );
 		txtAmount = findViewById( R.id.txtAmount );
@@ -92,6 +102,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 				//
 			}
 		});
+
+		startTimer();
 	}
 
 	public void setAmount( String txt ){ txtAmount.setText( txt ); }
@@ -144,7 +156,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
 		long idStock =  accion.getId();
 		if( jugador.hasStock( idStock ) ){
-			// TODO getTotalWonInStock
+			// TODO getTotalWonInStock ???
 			Map<Long, StocksBought> accionesJugador = jugador.getMapCantidadAcciones();
 			StocksBought stocksBought = accionesJugador.get( idStock );
 
@@ -160,4 +172,21 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 		if( red )	txtStockValue.setTextColor( getResources().getColor( R.color.red ) );
 		else		txtStockValue.setTextColor( getResources().getColor( R.color.green ) );
 	}
+
+	private void startTimer(){
+		countDownTimer = new CountDownTimer( TOTAL_AVAILABLE_TIME, 1000 ){
+			public void onTick(long millisUntilFinished) {
+				remaining -= 1000;
+				setTitle( sActionbarTitle + ": " + (remaining/1000) + " seconds" );
+			}
+			public void onFinish() {
+				Cache.set( "endValue", (jugador.getAmountMoney() - jugador.getInitialAmountMoney()) );
+				Intent intent = new Intent( PlayActivity.this, EndActivity.class );
+				startActivity( intent );
+			}
+		}.start();
+	}
+
+	// TODO on pause ...
+	// TODO una vez en EndActivity resetear: tiempo y dinero usuario
 }

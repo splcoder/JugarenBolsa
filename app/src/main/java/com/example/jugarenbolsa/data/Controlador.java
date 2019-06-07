@@ -50,17 +50,7 @@ public class Controlador extends Handler {
 			if( idStock == stockSelected.getId() ){
 				if( change < 0 )	playActivity.setStockValueColor( true );
 				else				playActivity.setStockValueColor( false );
-				// Show the Stock value
-				/*playActivity.setStockValue( String.valueOf( stockValue ) );
-				// Show players' data
-				if( jugador.hasStock( idStock ) ){
-					Map<Long, StocksBought> accionesJugador = jugador.getMapCantidadAcciones();
-					StocksBought stocksBought = accionesJugador.get( idStock );
-					playActivity.setTotalStocksBought( stocksBought.total );
-					playActivity.setStockWon( String.valueOf( stocksBought.total * stockValue ) );
-				}
-				else	playActivity.setTotalStocksBought( 0 );
-				*/
+				// Show the Stock value ...
 				playActivity.showUsersAndStockSelectedData();
 			}
 		}

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".activities.EndActivity">
+
+	<ImageView
+		android:id="@+id/img"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="fitXY"
+		app:srcCompat="@drawable/las_vegas"
+		tools:layout_editor_absoluteX="187dp"
+		tools:layout_editor_absoluteY="266dp" />
+
+	<TextView
+		android:id="@+id/txtBye"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="8dp"
+		android:ems="10"
+		android:fontFamily="cursive"
+		android:gravity="center"
+		android:text="Try in Las Vegas..."
+		android:textColor="@android:color/white"
+		android:textSize="36sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/img" />
+</android.support.constraint.ConstraintLayout>

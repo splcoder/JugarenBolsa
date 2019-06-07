@@ -29,6 +29,8 @@ import java.util.Timer;
 import es.dmoral.toasty.Toasty;
 
 public class PlayActivity extends AppCompatActivity implements View.OnClickListener {
+	PlayActivity that = this;
+
 	CountDownTimer countDownTimer;
 	String sActionbarTitle = "";
 	final long TOTAL_AVAILABLE_TIME = 10000;	// mls
@@ -183,10 +185,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 				Cache.set( "endValue", (jugador.getAmountMoney() - jugador.getInitialAmountMoney()) );
 				Intent intent = new Intent( PlayActivity.this, EndActivity.class );
 				startActivity( intent );
+				that.finish();	// << For restarting all the play
 			}
 		}.start();
 	}
-
-	// TODO on pause ...
-	// TODO una vez en EndActivity resetear: tiempo y dinero usuario
 }

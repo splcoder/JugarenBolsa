@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.a2019_05_30_listado.helpers.Cache;
 
 import com.example.jugarenbolsa.R;
+import com.example.jugarenbolsa.data.Bolsa;
 
 public class EndActivity extends AppCompatActivity {
 	ImageView img;
@@ -29,7 +30,7 @@ public class EndActivity extends AppCompatActivity {
 		double endValue = (double)Cache.get( "endValue" );
 		if( endValue >= 0 ){
 			img.setImageResource( R.drawable.gold_money );
-			txtBye.setText( "Has ganado: " + endValue + " !!!" );
+			txtBye.setText( "Has ganado: " + String.format( Bolsa.DECIMALS_FORMAT, endValue ) + " !!!" );
 			mp = MediaPlayer.create( this, R.raw.ganar );
 		}
 		else	mp = MediaPlayer.create( this, R.raw.perder );

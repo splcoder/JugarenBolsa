@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bolsa {
+	public static final String DECIMALS_FORMAT = "%.3f";	// String.format( Bolsa.DECIMALS_FORMAT, value );
 	private Map<Long, GirosAccion> mapAcciones = new HashMap<>();
 
 	private static boolean RUNNING = true;

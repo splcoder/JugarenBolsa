@@ -39,7 +39,7 @@ public class Controlador extends Handler {
 		String thread = msg.getData().getString( GirosAccion.THREAD );
 		if( playActivity != null && jugador != null ){
 			// Show players's money
-			playActivity.setAmount( String.valueOf( jugador.getAmountMoney() ) );
+			playActivity.setAmount( String.format( Bolsa.DECIMALS_FORMAT, jugador.getAmountMoney() ) );
 			//
 			Accion stockSelected = playActivity.getStockSelected();
 			// Show notes of Bolsa

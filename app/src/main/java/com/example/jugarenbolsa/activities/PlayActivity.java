@@ -33,7 +33,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
 	CountDownTimer countDownTimer;
 	String sActionbarTitle = "";
-	final long TOTAL_AVAILABLE_TIME = 10000;	// mls
+	final long TOTAL_AVAILABLE_TIME = 60000;	// mls
 	long remaining = TOTAL_AVAILABLE_TIME;
 
 	Bolsa bolsa;
@@ -145,16 +145,16 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 	}
 
 	public void showUsersAndStockSelectedData(){
-		setAmount( String.valueOf( jugador.getAmountMoney() ) );
+		setAmount( String.format( Bolsa.DECIMALS_FORMAT, jugador.getAmountMoney() ) );
 		double diference = jugador.getAmountMoney() - jugador.getInitialAmountMoney();
-		setAmountDiference( String.valueOf( diference ) );
+		setAmountDiference( String.format( Bolsa.DECIMALS_FORMAT, diference ) );
 		if( diference < 0 )	txtAmountDiference.setTextColor( getResources().getColor( R.color.red ) );
 		else				txtAmountDiference.setTextColor( getResources().getColor( R.color.green ) );
-		setTotalStocksWon( String.valueOf( jugador.getTotalStocksWon() ) );
-		setTotalWon( String.valueOf( jugador.getTotalWon() ) );
+		setTotalStocksWon( String.format( Bolsa.DECIMALS_FORMAT, jugador.getTotalStocksWon() ) );
+		setTotalWon( String.format( Bolsa.DECIMALS_FORMAT, jugador.getTotalWon() ) );
 
 		Accion accion = getStockSelected();
-		setStockValue( String.valueOf( accion.getValue() ) );
+		setStockValue( String.format( Bolsa.DECIMALS_FORMAT, accion.getValue() ) );
 
 		long idStock =  accion.getId();
 		if( jugador.hasStock( idStock ) ){
@@ -163,7 +163,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 			StocksBought stocksBought = accionesJugador.get( idStock );
 
 			setTotalStocksBought( stocksBought.total );
-			setStockWon( String.valueOf( stocksBought.total * accion.getValue() ) );
+			setStockWon( String.format( Bolsa.DECIMALS_FORMAT, stocksBought.total * accion.getValue() ) );
 		}
 		else{
 			setTotalStocksBought( 0 );

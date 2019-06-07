@@ -35,6 +35,7 @@ public class Controlador extends Handler {
 		//super.handleMessage(msg);
 		long idStock = msg.getData().getLong( GirosAccion.ID );	// Accion/Stock id
 		double stockValue = msg.getData().getDouble( GirosAccion.VALUE );
+		double change = msg.getData().getDouble( GirosAccion.CHANGE );
 		String thread = msg.getData().getString( GirosAccion.THREAD );
 		if( playActivity != null && jugador != null ){
 			// Show players's money
@@ -47,6 +48,8 @@ public class Controlador extends Handler {
 				playActivity.setNotesBolsa( thread + "\n\n" + (s.length() > MAX_CACHE ? s.substring( 0, MAX_CACHE ) : s) );
 			}
 			if( idStock == stockSelected.getId() ){
+				if( change < 0 )	playActivity.setStockValueColor( true );
+				else				playActivity.setStockValueColor( false );
 				// Show the Stock value
 				/*playActivity.setStockValue( String.valueOf( stockValue ) );
 				// Show players' data

@@ -35,6 +35,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 	CheckBox cbShowAll;
 	Spinner spinnerStocks;
 	TextView txtAmount;
+	TextView txtAmountDiference;
 	TextView txtStockValue;
 	TextView txtTotalStocksBought;
 	TextView txtStockWon;
@@ -52,6 +53,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
 		txtPlayersName = findViewById( R.id.txtPlayersName );
 		txtAmount = findViewById( R.id.txtAmount );
+		txtAmountDiference = findViewById( R.id.txtAmountDiference );
 		txtTotalStocksBought = findViewById( R.id.txtTotalStocksBought );
 		txtStockValue = findViewById( R.id.txtStockValue);
 		txtStockWon = findViewById( R.id.txtStockWon);
@@ -93,6 +95,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 	}
 
 	public void setAmount( String txt ){ txtAmount.setText( txt ); }
+	public void setAmountDiference( String txt ){ txtAmountDiference.setText( txt ); }
 	public void setTotalStocksBought( int totalBought ){ txtTotalStocksBought.setText( String.valueOf( totalBought ) ); }
 	public void setStockValue( String txt ){ txtStockValue.setText( txt ); }
 	public void setStockWon( String txt ){ txtStockWon.setText( txt ); }
@@ -129,6 +132,10 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
 	public void showUsersAndStockSelectedData(){
 		setAmount( String.valueOf( jugador.getAmountMoney() ) );
+		double diference = jugador.getAmountMoney() - jugador.getInitialAmountMoney();
+		setAmountDiference( String.valueOf( diference ) );
+		if( diference < 0 )	txtAmountDiference.setTextColor( getResources().getColor( R.color.red ) );
+		else				txtAmountDiference.setTextColor( getResources().getColor( R.color.green ) );
 		setTotalStocksWon( String.valueOf( jugador.getTotalStocksWon() ) );
 		setTotalWon( String.valueOf( jugador.getTotalWon() ) );
 
@@ -148,5 +155,9 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 			setTotalStocksBought( 0 );
 			setStockWon( String.valueOf( 0 ) );
 		}
+	}
+	public void setStockValueColor( boolean red ){
+		if( red )	txtStockValue.setTextColor( getResources().getColor( R.color.red ) );
+		else		txtStockValue.setTextColor( getResources().getColor( R.color.green ) );
 	}
 }

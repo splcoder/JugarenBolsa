@@ -6,6 +6,7 @@ import android.os.Message;
 public class GirosAccion extends Thread {
 	public static final String ID = "id";
 	public static final String VALUE = "value";
+	public static final String CHANGE = "change";
 	public static final String THREAD = "thread";
 
 	public static final int MAX_TIME_INTERVAL = 10000;	// 10 seconds
@@ -45,6 +46,7 @@ public class GirosAccion extends Thread {
 			Bundle bundle = new Bundle();
 			bundle.putLong( ID, accion.getId() );
 			bundle.putDouble( VALUE, accion.getValue() );
+			bundle.putDouble( CHANGE, rChange );
 			//bundle.putString( THREAD, currentThread().toString() + ", Accion: " + accion.toString() + ", Change: " + rChange );
 			bundle.putString( THREAD, currentThread().toString() + ", Accion: " + accion.toStringAll() + ", Change: " + rChange );
 			msg.setData( bundle );

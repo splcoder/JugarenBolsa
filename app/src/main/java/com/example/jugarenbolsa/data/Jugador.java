@@ -50,6 +50,9 @@ public class Jugador {
 	public double getAmountMoney() {
 		return amountMoney;
 	}
+	public double getInitialAmountMoney() {
+		return initialAmountMoney;
+	}
 
 	public void setAmountMoney(double amountMoney) {
 		this.amountMoney = amountMoney;
@@ -87,8 +90,10 @@ public class Jugador {
 		else{
 			if( stocksBought.total == 0 )	return 0;
 			else{
+				double stockValue = accion.getValue();
 				stocksBought.total--;
-				amountMoney += accion.getValue();
+				stocksBought.spent -= stockValue;
+				amountMoney += stockValue;
 			}
 		}
 		return 1;

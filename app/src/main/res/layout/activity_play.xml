@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".activities.PlayActivity">
+
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="133dp"
+		android:layout_height="31dp"
+		android:layout_marginStart="24dp"
+		android:layout_marginTop="12dp"
+		android:layout_marginEnd="8dp"
+		android:text="Total S won"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toStartOf="@+id/guideline"
+		app:layout_constraintHorizontal_bias="0.075"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/btnBuy" />
+
+	<TextView
+		android:id="@+id/txtStockWon"
+		android:layout_width="121dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="24dp"
+		android:ems="10"
+		android:gravity="right"
+		android:text="0000000"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.962"
+		app:layout_constraintStart_toStartOf="@+id/guideline"
+		app:layout_constraintTop_toBottomOf="@+id/txtStockValue" />
+
+	<TextView
+		android:id="@+id/textView7"
+		android:layout_width="133dp"
+		android:layout_height="31dp"
+		android:layout_marginStart="24dp"
+		android:layout_marginTop="4dp"
+		android:layout_marginEnd="8dp"
+		android:text="Total won"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toStartOf="@+id/guideline"
+		app:layout_constraintHorizontal_bias="0.075"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+	<TextView
+		android:id="@+id/txtTotalStocksWon"
+		android:layout_width="121dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="12dp"
+		android:layout_marginEnd="24dp"
+		android:ems="10"
+		android:gravity="right"
+		android:text="0000000"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.962"
+		app:layout_constraintStart_toStartOf="@+id/guideline"
+		app:layout_constraintTop_toBottomOf="@+id/btnSell" />
+
+	<TextView
+		android:id="@+id/txtStockValue"
+		android:layout_width="121dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="24dp"
+		android:ems="10"
+		android:gravity="right"
+		android:text="0000000"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.962"
+		app:layout_constraintStart_toStartOf="@+id/guideline"
+		app:layout_constraintTop_toBottomOf="@+id/spinnerStocks" />
+
+	<TextView
+		android:id="@+id/textView6"
+		android:layout_width="133dp"
+		android:layout_height="31dp"
+		android:layout_marginStart="24dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:text="Stock value"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toStartOf="@+id/guideline"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/cbShowAll" />
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="300dp"
+		android:layout_marginTop="4dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@+id/guideline2">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<TextView
+				android:id="@+id/txtNotesBolsa"
+				android:layout_width="match_parent"
+				android:layout_height="250dp"
+				android:layout_marginTop="0dp" />
+		</LinearLayout>
+	</ScrollView>
+
+	<Button
+		android:id="@+id/btnBuy"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="12dp"
+		android:layout_marginEnd="16dp"
+		android:text="Buy"
+		android:textAllCaps="false"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toStartOf="@+id/guideline"
+		app:layout_constraintHorizontal_bias="0.655"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+	<Button
+		android:id="@+id/btnSell"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginEnd="8dp"
+		android:text="Sell"
+		android:textAllCaps="false"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.457"
+		app:layout_constraintStart_toStartOf="@+id/guideline"
+		app:layout_constraintTop_toBottomOf="@+id/txtStockWon" />
+
+	<TextView
+		android:id="@+id/txtAmount"
+		android:layout_width="121dp"
+		android:layout_height="35dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="24dp"
+		android:ems="10"
+		android:gravity="right"
+		android:text="0000000"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.962"
+		app:layout_constraintStart_toStartOf="@+id/guideline"
+		app:layout_constraintTop_toBottomOf="@+id/txtPlayersName" />
+
+	<TextView
+		android:id="@+id/textView3"
+		android:layout_width="129dp"
+		android:layout_height="33dp"
+		android:layout_marginStart="24dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:ems="10"
+		android:gravity="left"
+		android:text="Amount"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toStartOf="@+id/guideline"
+		app:layout_constraintHorizontal_bias="0.068"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/txtPlayersName" />
+
+	<TextView
+		android:id="@+id/txtPlayersName"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:ems="10"
+		android:gravity="center_horizontal"
+		android:text="Players Name"
+		android:textSize="30sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.495"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<Spinner
+		android:id="@+id/spinnerStocks"
+		android:layout_width="243dp"
+		android:layout_height="34dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="64dp"
+		android:layout_marginEnd="24dp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.985"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/txtPlayersName" />
+
+	<android.support.constraint.Guideline
+		android:id="@+id/guideline"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		app:layout_constraintGuide_begin="205dp" />
+
+	<android.support.constraint.Guideline
+		android:id="@+id/guideline2"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_begin="390dp" />
+
+	<TextView
+		android:id="@+id/textView4"
+		android:layout_width="133dp"
+		android:layout_height="31dp"
+		android:layout_marginStart="24dp"
+		android:layout_marginTop="12dp"
+		android:layout_marginEnd="8dp"
+		android:text="Stock won"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toStartOf="@+id/guideline"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+	<CheckBox
+		android:id="@+id/cbShowAll"
+		android:layout_width="93dp"
+		android:layout_height="33dp"
+		android:layout_marginStart="24dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="8dp"
+		android:checked="true"
+		android:text="Show All"
+		app:layout_constraintEnd_toStartOf="@+id/spinnerStocks"
+		app:layout_constraintHorizontal_bias="0.157"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+	<TextView
+		android:id="@+id/txtTotalStocksBought"
+		android:layout_width="58dp"
+		android:layout_height="31dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="60dp"
+		android:layout_marginEnd="8dp"
+		android:gravity="left"
+		android:text="0"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toStartOf="@+id/txtStockWon"
+		app:layout_constraintHorizontal_bias="0.333"
+		app:layout_constraintStart_toEndOf="@+id/textView4"
+		app:layout_constraintTop_toBottomOf="@+id/spinnerStocks" />
+
+	<TextView
+		android:id="@+id/txtTotalWon"
+		android:layout_width="121dp"
+		android:layout_height="27dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="4dp"
+		android:layout_marginEnd="8dp"
+		android:gravity="right"
+		android:text="0000000"
+		android:textSize="24sp"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.739"
+		app:layout_constraintStart_toStartOf="@+id/guideline"
+		app:layout_constraintTop_toBottomOf="@+id/txtTotalStocksWon" />
+
+</android.support.constraint.ConstraintLayout>

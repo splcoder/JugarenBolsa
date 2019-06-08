@@ -28,6 +28,8 @@ import java.util.Timer;
 
 import es.dmoral.toasty.Toasty;
 
+// TODO trend	<<< Sum last 5 variations
+// TODO speed of change
 public class PlayActivity extends AppCompatActivity implements View.OnClickListener {
 	PlayActivity that = this;
 

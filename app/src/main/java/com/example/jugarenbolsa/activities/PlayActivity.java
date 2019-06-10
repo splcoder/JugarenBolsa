@@ -53,6 +53,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 	TextView txtStockWon;
 	TextView txtTotalStocksWon;
 	TextView txtTotalWon;
+	TextView txtArrow;
 
 	TextView txtNotesBolsa;
 
@@ -78,6 +79,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 		btnSell = findViewById( R.id.btnSell );
 		txtTotalStocksWon = findViewById( R.id.txtTotalStocksWon );
 		txtTotalWon = findViewById( R.id.txtTotalWon );
+		txtArrow = findViewById( R.id.txtArrow );
 
 		jugador = (Jugador)Cache.get( Jugador.CACHE_NAME );
 		txtPlayersName.setText( jugador.getName() );
@@ -157,6 +159,19 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
 		Accion accion = getStockSelected();
 		setStockValue( String.format( Bolsa.DECIMALS_FORMAT, accion.getValue() ) );
+		double trend = accion.getTrend();
+		if( trend > 0 ){
+			txtArrow.setText( getApplicationContext().getResources().getText( R.string.arrow_up ) );
+			txtArrow.setTextColor( getApplicationContext().getResources().getColor( R.color.green ) );
+		}
+		else if( trend == 0 ){
+			txtArrow.setText( getApplicationContext().getResources().getText( R.string.arrow_equal ) );
+			txtArrow.setTextColor( getApplicationContext().getResources().getColor( R.color.blue ) );
+		}
+		else{
+			txtArrow.setText( getApplicationContext().getResources().getText( R.string.arrow_down ) );
+			txtArrow.setTextColor( getApplicationContext().getResources().getColor( R.color.red ) );
+		}
 
 		long idStock =  accion.getId();
 		if( jugador.hasStock( idStock ) ){

@@ -10,6 +10,7 @@ public class Jugador {
 
 	public static final String CACHE_NAME = "jugador";
 	public static final double INITIAL_MAX_AMOUNT_OF_MONEY = 10000;
+	public static final String BEST_PLAYER = "best_player";
 
 	private long id;
 	private String name;

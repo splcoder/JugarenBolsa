@@ -36,6 +36,7 @@ public class Controlador extends Handler {
 		long idStock = msg.getData().getLong( GirosAccion.ID );	// Accion/Stock id
 		double stockValue = msg.getData().getDouble( GirosAccion.VALUE );
 		double change = msg.getData().getDouble( GirosAccion.CHANGE );
+		double trend = msg.getData().getDouble( GirosAccion.TREND );
 		String thread = msg.getData().getString( GirosAccion.THREAD );
 		if( playActivity != null && jugador != null ){
 			// Show players's money

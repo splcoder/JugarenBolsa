@@ -7,6 +7,7 @@ public class GirosAccion extends Thread {
 	public static final String ID = "id";
 	public static final String VALUE = "value";
 	public static final String CHANGE = "change";
+	public static final String TREND = "trend";
 	public static final String THREAD = "thread";
 
 	public static final int MAX_TIME_INTERVAL = 10000;	// 10 seconds
@@ -36,6 +37,7 @@ public class GirosAccion extends Thread {
 			// How much will change the value of the Accion ?
 			double rChange = (Math.random() * MAX_VALUE_CHANGE_STEP) - (Math.random() * MAX_VALUE_CHANGE_STEP);
 			accion.addValue( rChange );
+			accion.setNewChange( rChange );
 			double rActualValue = accion.getValue();
 			if( rActualValue < accion.getMinReached() )		accion.setMinReached( rActualValue );
 			if( accion.getMaxReached() < rActualValue )		accion.setMaxReached( rActualValue );
@@ -47,8 +49,9 @@ public class GirosAccion extends Thread {
 			bundle.putLong( ID, accion.getId() );
 			bundle.putDouble( VALUE, accion.getValue() );
 			bundle.putDouble( CHANGE, rChange );
+			bundle.putDouble( TREND, accion.getTrend() );
 			//bundle.putString( THREAD, currentThread().toString() + ", Accion: " + accion.toString() + ", Change: " + rChange );
-			bundle.putString( THREAD, currentThread().toString() + ", Accion: " + accion.toStringAll() + ", Change: " + rChange );
+			bundle.putString( THREAD, currentThread().toString() + ", Accion: " + accion.toStringAll() + ", Change: " + String.format( Bolsa.DECIMALS_FORMAT, rChange ) );
 			msg.setData( bundle );
 			handler.sendMessage( msg );
 		}

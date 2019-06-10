@@ -2,6 +2,8 @@ package com.example.jugarenbolsa.data;
 
 import com.example.jugarenbolsa.helpers.db.IdGenerator;
 
+import java.util.LinkedList;
+
 public class Accion {
 	private static IdGenerator idGenerator = new IdGenerator();
 
@@ -17,6 +19,8 @@ public class Accion {
 	private double minReached = Double.MAX_VALUE;
 	private int risk = 1;		// nivel de riesgo: de 1 a 4, siendo 1 el riesgo mínimo y 4 el riesgo máximo
 								// el riesgo será bajo si la accion NO varía mucho
+	private LinkedList<Double> lastChanges = new LinkedList<>();
+	private final int MAX_LAST_CHANGES = 5;
 
 	/**
 	 * Generate a new Accion type
@@ -93,6 +97,13 @@ public class Accion {
 		this.risk = risk;
 	}
 
+	public void setNewChange( double change ){
+		lastChanges.add( change );
+		if( lastChanges.size() > MAX_LAST_CHANGES )		lastChanges.removeFirst();
+		trend = 0;
+		for( double d : lastChanges )	trend += d;
+	}
+
 	@Override
 	public String toString() {
 		return "id=" + id +
@@ -102,10 +113,10 @@ public class Accion {
 		return "Accion{" +
 				"id=" + id +
 				", companyName='" + companyName + '\'' +
-				", value=" + value +
-				", trend=" + trend +
-				", maxReached=" + maxReached +
-				", minReached=" + minReached +
+				", value=" + String.format( Bolsa.DECIMALS_FORMAT, value ) +
+				", trend=" + String.format( Bolsa.DECIMALS_FORMAT, trend ) +
+				", maxReached=" + String.format( Bolsa.DECIMALS_FORMAT, maxReached ) +
+				", minReached=" + String.format( Bolsa.DECIMALS_FORMAT, minReached ) +
 				", risk=" + risk +
 				'}';
 	}
